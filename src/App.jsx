@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import AddItems from './addItems';
+import ReturnedItems from './ReturnedItems';
+import LostItems from './lostItems';
+import FoundItems from './FoundItems';
+import ReceivedRewards from './receivedRewards';
+import  ApplicationForm from './foundApplication'
+import ApplicationFormLost from './lostAplication';
+import SignUp from './SignUp';
+import AdminLogIn from './AdminLogIn'
+import LogIn from './LogIn'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SignUp />}/>
+        <Route path = "/LogIn" element={<LogIn/>} /> 
+        <Route path ='/adminLogIn'  element={<AdminLogIn/>}/>
+        <Route path="/HomePage" element={<Home/>}/>
+        <Route path="/add" element={<AddItems/>}/>
+        <Route path="/returned" element={<ReturnedItems/>}/>
+        <Route path="/lost" element={<LostItems/>}/>
+        <Route path="/found" element={<FoundItems/>}/>
+        <Route path="/received" element={<ReceivedRewards/>}/>
+        <Route path="/foundApplication" element={<ApplicationForm/>}/>
+        <Route path="/lostApplication" element={<ApplicationFormLost/>}/>
+        
+      </Routes>
+    </BrowserRouter>
+
+    </div>
     </>
   )
 }
